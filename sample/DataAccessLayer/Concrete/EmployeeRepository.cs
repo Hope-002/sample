@@ -17,5 +17,10 @@
             };
             return ListEmployees;
         }
+
+        public List<Employee> GetAllEmployees(int id)
+        {
+            return GetAllEmployees(id);
+        }
     }
 }

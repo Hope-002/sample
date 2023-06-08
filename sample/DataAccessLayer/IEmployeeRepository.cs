@@ -3,5 +3,7 @@
     public interface IEmployeeRepository
     {
         List<Employee> GetAllEmployees();
+
+        List<Employee> GetAllEmployees(int id);
     }
 }

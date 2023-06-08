@@ -10,12 +10,22 @@ namespace sample.BusinessLayer.Concrete
         {
             _repository = repository;
         }
-
-        public List<Employee> GetActiveEmployees()
+        
+        public List<Employee> GetAll()
         {
             var allEmployees = _repository.GetAllEmployees();
-            var activeEmployees = allEmployees.Where(x => x.IsActive).ToList();
+            return allEmployees;
+        }
+        public List<Employee> GetActiveEmployees()
+        {
+            var activeEmployees = GetAll().Where(x => x.IsActive).ToList();
             return activeEmployees;
+        }
+        public List<Employee> GetEmployees(int id)
+        {
+            var employeeId = GetAll().Where(x => x.ID == id);
+            List<Employee> employees = employeeId.ToList();
+            return employees;
         }
     }
 }

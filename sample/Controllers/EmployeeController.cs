@@ -15,10 +15,24 @@ namespace sample.Controllers
             _service = service;
         }
 
-        [HttpGet("getEmployees")]
+        [HttpGet("getAllEmployees")]
+        public ActionResult GetAllEmployees()
+        {
+            var employees = _service.GetAll();
+            return Ok(employees);
+        }
+
+        [HttpGet("getActiveEmployees")]
         public ActionResult GetEmployees() 
         {
             var employees = _service.GetActiveEmployees();
+            return Ok(employees);
+        }
+
+        [HttpGet("getEmployeesId")]
+        public ActionResult GetEmployees(int id)
+        {
+            var employees = _service.GetEmployees(id);
             return Ok(employees);
         }
     }
