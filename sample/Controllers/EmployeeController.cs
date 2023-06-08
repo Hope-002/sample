@@ -29,7 +29,7 @@ namespace sample.Controllers
             return Ok(employees);
         }
 
-        [HttpGet("getEmployeesId")]
+        [HttpGet("getEmployeesById")]
         public ActionResult GetEmployees(int id)
         {
             var employees = _service.GetEmployees(id);
