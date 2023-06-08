@@ -21,5 +21,21 @@ namespace sample.Controllers
             var employees = _service.GetActiveEmployees();
             return Ok(employees);
         }
+        [HttpPost("addEmployee")]
+        public ActionResult AddEmployee([FromBody] Employee employee)
+        {
+            if (employee == null)
+            {
+                return BadRequest("Invalid employee data");
+            }
+
+            // Additional validation or business logic checks can be performed here
+
+            // Call the service method to add the employee
+            _service.AddEmployee(employee);
+
+            // Return a success response
+            return Ok("Employee added successfully");
+        }
     }
 }
