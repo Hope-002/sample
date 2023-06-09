@@ -17,5 +17,10 @@ namespace sample.BusinessLayer.Concrete
             var activeEmployees = allEmployees.Where(x => x.IsActive).ToList();
             return activeEmployees;
         }
+        public Employee GetEmployeeById(int id)
+        {
+            var allEmployees = _repository.GetAllEmployees();
+            return allEmployees.FirstOrDefault(e => e.ID == id);
+        }
     }
 }

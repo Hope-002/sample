@@ -17,5 +17,13 @@
             };
             return ListEmployees;
         }
+        public Employee GetById(int id)
+        {
+            var ListEmployees = new List<Employee>();
+
+            return ListEmployees.FirstOrDefault(e => e.ID == id);
+        }
+
+
     }
 }

@@ -21,5 +21,14 @@ namespace sample.Controllers
             var employees = _service.GetActiveEmployees();
             return Ok(employees);
         }
+        [HttpGet("getEmployee/{id}")]
+        public ActionResult GetEmployee(int id)
+        {
+            var employee = _service.GetEmployeeById(id);
+            if (employee == null)
+                return NotFound();
+
+            return Ok(employee);
+        }
     }
 }
