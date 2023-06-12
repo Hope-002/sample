@@ -1,6 +1,6 @@
 ﻿namespace sample
 {
-       
+   
         public class Employee
         {
             public int ID { get; set; }

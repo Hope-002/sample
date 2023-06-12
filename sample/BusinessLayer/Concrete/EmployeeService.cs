@@ -1,4 +1,5 @@
-﻿using sample.DataAccessLayer;
+﻿using Microsoft.AspNetCore.Mvc;
+using sample.DataAccessLayer;
 using sample.DataAccessLayer.Concrete;
 
 namespace sample.BusinessLayer.Concrete
@@ -27,5 +28,8 @@ namespace sample.BusinessLayer.Concrete
             List<Employee> employees = employeeId.ToList();
             return employees;
         }
+
+       
+        
     }
 }

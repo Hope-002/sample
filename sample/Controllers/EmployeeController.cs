@@ -35,5 +35,11 @@ namespace sample.Controllers
             var employees = _service.GetEmployees(id);
             return Ok(employees);
         }
+
+        [HttpPost("addEmployee")]
+        public ActionResult AddEmployee(Employee employee)
+        {
+            return Ok(employee);
+        }
     }
 }
