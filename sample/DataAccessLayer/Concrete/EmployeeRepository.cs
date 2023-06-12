@@ -13,7 +13,7 @@ namespace sample.DataAccessLayer.Concrete
 
                 new Employee() { ID = 1, Name = "Pranaya", Department = "IT", IsActive = true },
                 new Employee() { ID = 2, Name = "Kumar", Department = "HR", IsActive = true },
-                new Employee() { ID = 3, Name = "Rout", Department = "Payroll", IsActive = false }
+                new Employee() { ID = 3, Name = "Rout", Department = "Payroll", IsActive = true }
             };
 
 
