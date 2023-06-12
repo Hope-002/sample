@@ -21,6 +21,9 @@ namespace sample.Controllers
             var employees = _service.GetActiveEmployees();
             return Ok(employees);
         }
+
+
+
         [HttpGet("getEmployee/{id}")]
         public ActionResult GetEmployee(int id)
         {
@@ -30,5 +33,33 @@ namespace sample.Controllers
 
             return Ok(employee);
         }
+
+
+
+        [HttpPost("addEmployees")]
+        public ActionResult PostEmployee(Employee employee)
+        {
+            _service.AddEmployee(employee);
+            return Ok(employee);
+        }
+
+
+
+        [HttpDelete("deleteEmployee/{id}")]
+        public ActionResult DeleteEmployee(int id)
+        {
+            var employees = _service.DeleteEmployee(id);
+            return Ok(employees);
+        }
+
+
+
+        [HttpPut("updateEmployee")]
+        public ActionResult UpdateEmployee(Employee updatedEmployee)
+        {
+            var employees = _service.UpdateEmployee(updatedEmployee);
+            return Ok(employees);
+        }
+
     }
 }

@@ -22,5 +22,20 @@ namespace sample.BusinessLayer.Concrete
             var allEmployees = _repository.GetAllEmployees();
             return allEmployees.FirstOrDefault(e => e.ID == id);
         }
+        public List<Employee> AddEmployee(Employee employee)
+        {
+
+            var rep = _repository.AddEmployee(employee);
+            return rep;
+        }
+        public List<Employee> DeleteEmployee(int id)
+        {
+          
+            return _repository.DeleteEmployee(id);
+        }
+        public List<Employee> UpdateEmployee(Employee updatedEmployee)
+        {
+            return _repository.UpdateEmployee(updatedEmployee);
+        }
     }
 }
