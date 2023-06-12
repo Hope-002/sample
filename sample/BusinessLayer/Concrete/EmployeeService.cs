@@ -28,7 +28,7 @@ namespace sample.BusinessLayer.Concrete
             var allEmployees = _repository.GetAllEmployees();
             return allEmployees.FirstOrDefault(e => e.ID == id);
         }
-        public void DeleteEmployee(int id)
+       public void DeleteEmployee(int id)
         {
             _repository.DeleteEmployee(id);
         }

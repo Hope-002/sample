@@ -38,12 +38,22 @@ namespace sample.Controllers
 
             return Ok(employee);
         }
+        //[HttpDelete("deleteEmployee/{id}")]
+        //public ActionResult DeleteEmployee(int id)
+        //{
+        //    _service.DeleteEmployee(id);
+        //    return Ok();
+        //}
+
         [HttpDelete("deleteEmployee/{id}")]
         public ActionResult DeleteEmployee(int id)
         {
-            _service.DeleteEmployee(id);
-            return Ok();
-        }
+            var employee = _service.GetEmployeeById(id);
+            if (employee == null)
+                return NotFound();
 
+            _service.DeleteEmployee(id);
+            return Ok(employee);
+        }
     }
 }

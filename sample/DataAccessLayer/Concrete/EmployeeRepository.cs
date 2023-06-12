@@ -31,10 +31,21 @@
             var ListEmployees = new List<Employee>();
             return ListEmployees.FirstOrDefault(e => e.ID == id);
         }
+        //public void DeleteEmployee(int id)
+        //{
+        //    var ListEmployees = new List<Employee>();
+        //    var employee = GetById(id);
+        //    if (employee != null)
+        //        ListEmployees.Remove(employee);
+        //}
+
         public void DeleteEmployee(int id)
         {
-            var ListEmployees = new List<Employee>();
-           
+            var employee = ListEmployees.FirstOrDefault(e => e.ID == id);
+            if (employee != null)
+            {
+                ListEmployees.Remove(employee);
+            }
         }
 
     }
