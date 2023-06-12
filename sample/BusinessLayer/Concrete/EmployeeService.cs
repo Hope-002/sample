@@ -17,9 +17,21 @@ namespace sample.BusinessLayer.Concrete
             return activeEmployees;
         }
 
-        public void AddEmployee(Employee employee)
+        public List<Employee> AddEmployee (Employee employee)
         {
-            throw new NotImplementedException();
+            
+            var rep = _repository.AddEmployee(employee);
+           return rep;
+         }
+        public Employee GetEmployeeById(int id)
+        {
+            var allEmployees = _repository.GetAllEmployees();
+            return allEmployees.FirstOrDefault(e => e.ID == id);
         }
+        public void DeleteEmployee(int id)
+        {
+            _repository.DeleteEmployee(id);
+        }
+
     }
 }

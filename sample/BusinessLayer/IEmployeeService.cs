@@ -3,6 +3,8 @@
     public interface IEmployeeService
     {
         List<Employee> GetActiveEmployees();
-        void AddEmployee(Employee employee);
+        List<Employee>AddEmployee(Employee employee);
+        Employee GetEmployeeById(int id);
+        void DeleteEmployee(int id);
     }
 }

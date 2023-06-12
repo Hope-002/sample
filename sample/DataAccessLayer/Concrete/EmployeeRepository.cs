@@ -6,32 +6,36 @@
         {
         }
 
-        public List<Employee> GetAllEmployees()
-        {
-            var ListEmployees = new List<Employee>
+         public static List<Employee> ListEmployees = new List<Employee>
             {
 
                 new Employee() { ID = 1, Name = "Pranaya", Department = "IT", IsActive = true },
                 new Employee() { ID = 2, Name = "Kumar", Department = "HR", IsActive = true },
                 new Employee() { ID = 3, Name = "Rout", Department = "Payroll", IsActive = true }
             };
+
+        public List<Employee> GetAllEmployees()
+        {
+            
             return ListEmployees;
         }
-        public Employee AddEmployee(Employee employee)
+        public List<Employee> AddEmployee(Employee employee)
         {
-            employee.ID = GenerateUniqueId();
-            Employee.Add(employee);
-            return employee;
+            
+            ListEmployees.Add(employee);
+            
+            return  ListEmployees;
         }
-        private int GenerateUniqueId()
+        public Employee GetById(int id)
         {
-            int newId = Employee.Count + 1;
-            return newId;
+            var ListEmployees = new List<Employee>();
+            return ListEmployees.FirstOrDefault(e => e.ID == id);
+        }
+        public void DeleteEmployee(int id)
+        {
+            var ListEmployees = new List<Employee>();
+           
         }
 
-        void IEmployeeRepository.AddEmployee(Employee employee)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

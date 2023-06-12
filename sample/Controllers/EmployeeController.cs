@@ -25,9 +25,25 @@ namespace sample.Controllers
         [HttpPost("addEmployees")]
         public ActionResult PostEmployee(Employee employee) 
         {
+            _service.AddEmployee(employee);
             return Ok(employee);    
         }
-       
+
+        [HttpGet("getEmployee/{id}")]
+        public ActionResult GetEmployee(int id)
+        {
+            var employee = _service.GetEmployeeById(id);
+            if (employee == null)
+                return NotFound();
+
+            return Ok(employee);
+        }
+        [HttpDelete("deleteEmployee/{id}")]
+        public ActionResult DeleteEmployee(int id)
+        {
+            _service.DeleteEmployee(id);
+            return Ok();
+        }
 
     }
 }
