@@ -1,8 +1,16 @@
 ﻿namespace sample.BusinessLayer
+
 {
     public interface IEmployeeService
     {
-        void AddEmployee(Employee employee);
         List<Employee> GetActiveEmployees();
+        Employee GetEmployeeById(int id);
+        List<Employee> AddEmployee(Employee employee);
+        List<Employee> DeleteEmployee(int id);
+       
+
+
     }
+
+
 }

@@ -10,32 +10,47 @@ namespace sample.Controllers
     public class EmployeeController : ControllerBase
     {
         IEmployeeService _service;
-        public EmployeeController(IEmployeeService service) 
+        public EmployeeController(IEmployeeService service)
         {
             _service = service;
         }
 
         [HttpGet("getEmployees")]
-        public ActionResult GetEmployees() 
+        public ActionResult GetEmployees()
         {
             var employees = _service.GetActiveEmployees();
             return Ok(employees);
         }
-        [HttpPost("addEmployee")]
-        public ActionResult AddEmployee([FromBody] Employee employee)
+
+
+
+        [HttpGet("getEmployee/{id}")]
+        public ActionResult GetEmployee(int id)
         {
+            var employee = _service.GetEmployeeById(id);
             if (employee == null)
-            {
-                return BadRequest("Invalid employee data");
-            }
+                return NotFound();
 
-            // Additional validation or business logic checks can be performed here
-
-            // Call the service method to add the employee
-            _service.AddEmployee(employee);
-
-            // Return a success response
-            return Ok("Employee added successfully");
+            return Ok(employee);
         }
+
+
+
+        [HttpPost("addEmployees")]
+        public ActionResult PostEmployee(Employee employee)
+        {
+            _service.AddEmployee(employee);
+            return Ok(employee);
+        }
+
+
+
+        [HttpDelete("deleteEmployee/{id}")]
+        public ActionResult DeleteEmployee(int id)
+        {
+            var employees = _service.DeleteEmployee(id);
+            return Ok(employees);
+        }
+
     }
 }

@@ -6,7 +6,7 @@ namespace sample.BusinessLayer.Concrete
     public class EmployeeService : IEmployeeService
     {
         private IEmployeeRepository _repository;
-        public EmployeeService(IEmployeeRepository repository) 
+        public EmployeeService(IEmployeeRepository repository)
         {
             _repository = repository;
         }
@@ -17,5 +17,22 @@ namespace sample.BusinessLayer.Concrete
             var activeEmployees = allEmployees.Where(x => x.IsActive).ToList();
             return activeEmployees;
         }
+        public Employee GetEmployeeById(int id)
+        {
+            var allEmployees = _repository.GetAllEmployees();
+            return allEmployees.FirstOrDefault(e => e.ID == id);
+        }
+        public List<Employee> AddEmployee(Employee employee)
+        {
+
+            var rep = _repository.AddEmployee(employee);
+            return rep;
+        }
+        public List<Employee> DeleteEmployee(int id)
+        {
+
+            return _repository.DeleteEmployee(id);
+        }
+       
     }
 }
