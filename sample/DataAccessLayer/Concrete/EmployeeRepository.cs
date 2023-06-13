@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Sample;
-using sample.Model;
-using Microsoft.AspNetCore.Http.HttpResults;
+﻿using Sample;
 
 namespace sample.DataAccessLayer.Concrete
 {
@@ -46,6 +43,12 @@ namespace sample.DataAccessLayer.Concrete
                 _context.SaveChanges();
             }
             return employeeId;
+        }
+
+        public void UpdateEmployee(Employee employee)
+        {
+            _context.Employees.Update(employee);
+            _context.SaveChanges();
         }
     }
 }

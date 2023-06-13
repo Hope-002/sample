@@ -1,6 +1,4 @@
 ﻿using sample;
-using sample.Model;
-using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.EntityFrameworkCore;
 
 namespace Sample

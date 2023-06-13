@@ -1,10 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using sample.BusinessLayer;
-using sample.BusinessLayer.Concrete;
-using sample.DataAccessLayer;
-using sample.Model;
-
 
 namespace sample.Controllers
 {
@@ -36,8 +31,17 @@ namespace sample.Controllers
         [HttpGet("getEmployeesById")]
         public ActionResult GetEmployees(int id)
         {
-            var employees = _service.GetEmployees(id);
-            return Ok(employees);
+            if (id != null)
+            {
+                var employees = _service.GetEmployees(id);
+                return Ok(employees);
+            }
+            else
+            {
+                return BadRequest("ID not available");
+
+            }
+
         }
 
         [HttpPost("AddEmployee")]
@@ -54,5 +58,19 @@ namespace sample.Controllers
             return Ok(employees);
         }
 
+        [HttpPut("UpdateEmployee")]
+      
+        public ActionResult UpdateEmployee(int id, Employee employee)
+        {
+           
+            if (id != employee.ID)
+            {
+                return BadRequest("Employee ID mismatch");
+            }
+
+            _service.UpdateEmployee(employee);
+            return Ok();
+        }
     }
+   
 }

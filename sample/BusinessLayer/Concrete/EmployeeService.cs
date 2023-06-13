@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using sample.DataAccessLayer;
-using sample.DataAccessLayer.Concrete;
-using sample.Model;
-using System.Collections.Generic;
-
+﻿using sample.DataAccessLayer;
 
 namespace sample.BusinessLayer.Concrete
 {
@@ -46,6 +40,12 @@ namespace sample.BusinessLayer.Concrete
         {
             var result = _repository.DeleteEmployee(id);
             return result;
+        }
+
+        public void UpdateEmployee(Employee employee)
+        {
+           _repository.UpdateEmployee(employee);
+          
         }
 
     }

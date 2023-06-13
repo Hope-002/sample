@@ -1,6 +1,4 @@
-﻿using sample.Model;
-
-namespace sample.BusinessLayer
+﻿namespace sample.BusinessLayer
 {
     public interface IEmployeeService
     {
@@ -9,5 +7,6 @@ namespace sample.BusinessLayer
         List<Employee> GetEmployees(int id);
         Employee CreateEmployee(Employee employee);
         Employee DeleteEmployee(int id);
+        void UpdateEmployee(Employee employee);
     }
 }

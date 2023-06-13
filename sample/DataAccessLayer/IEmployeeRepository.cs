@@ -1,8 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using sample.Model;
-
-
-namespace sample.DataAccessLayer
+﻿namespace sample.DataAccessLayer
 {
     public interface IEmployeeRepository
     {
@@ -10,6 +6,6 @@ namespace sample.DataAccessLayer
         List<Employee> GetAllEmployees(int id);
         Employee AddEmployee(Employee employee);
         Employee DeleteEmployee(int id);
-
+        void UpdateEmployee(Employee employee);
     }
 }
