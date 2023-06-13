@@ -1,21 +1,51 @@
-﻿namespace sample.DataAccessLayer.Concrete
+﻿using Microsoft.EntityFrameworkCore;
+using Sample;
+using sample.Model;
+using Microsoft.AspNetCore.Http.HttpResults;
+
+namespace sample.DataAccessLayer.Concrete
 {
     public class EmployeeRepository : IEmployeeRepository
     {
-        public EmployeeRepository()
-        {
-        }
+        private readonly EmployeeDbContext _context;
 
+        public EmployeeRepository(EmployeeDbContext context)
+        {
+            _context = context;
+        }
         public List<Employee> GetAllEmployees()
         {
-            var ListEmployees = new List<Employee>
-            {
+            return _context.Employees.ToList();
+        }
 
-                new Employee() { ID = 1, Name = "Pranaya", Department = "IT", IsActive = true },
-                new Employee() { ID = 2, Name = "Kumar", Department = "HR", IsActive = true },
-                new Employee() { ID = 3, Name = "Rout", Department = "Payroll", IsActive = false }
+        public List<Employee> GetAllEmployees(int id)
+        {
+            return GetAllEmployees(id);
+        }
+
+        public Employee AddEmployee(Employee employee)
+        {
+            var addEmployee = new Employee()
+            {
+                ID = employee.ID,
+                Name = employee.Name,
+                Department = employee.Department,
+                IsActive = employee.IsActive
             };
-            return ListEmployees;
+            _context.Employees.Add(employee);
+            _context.SaveChanges();
+            return addEmployee;
+        }
+
+       public Employee DeleteEmployee(int id) 
+       {
+            var employeeId = _context.Employees.Find(id);
+            if (employeeId != null)
+            {
+                _context.Employees.Remove(employeeId);
+                _context.SaveChanges();
+            }
+            return employeeId;
         }
     }
 }
